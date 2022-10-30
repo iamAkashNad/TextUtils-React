@@ -2,12 +2,11 @@ import "./App.css";
 import "./base.css";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-import About from "./components/About";
+// import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [theme, changeTheme] = useState("light");
@@ -60,32 +59,33 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar
-          title="TextUtils"
-          theme={theme}
-          colTheme={colTheme}
-          setTheme={setTheme}
-          toggleTheme={toggleTheme}
-        />
-        <Alert alert={ alert } />
+      <Navbar
+        title="TextUtils"
+        theme={theme}
+        colTheme={colTheme}
+        setTheme={setTheme}
+        toggleTheme={toggleTheme}
+      />
+      <Alert alert={alert} />
+      <TextForm
+        heading="Enter the text to analyse!"
+        colTheme={colTheme}
+        setAlert={setAlert}
+        btnColor={btnColor}
+        theme={theme}
+        rows={6}
+      />
+      {/* <Router>
         <Routes>
           <Route exact path="/about" element={ <About colTheme={ colTheme } theme={ theme } /> } />
           <Route
             exact path="/"
             element={
-              <TextForm
-                heading="Enter the text to analyse!"
-                colTheme={colTheme}
-                setAlert={setAlert}
-                btnColor={btnColor}
-                theme={theme}
-                rows={6}
-              />
+              
             }
           />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }

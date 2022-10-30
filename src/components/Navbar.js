@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   let modeText = "Enable Dark Mode";
@@ -31,9 +31,9 @@ export default function Navbar(props) {
   return (
     <nav className={ `navbar navbar-expand-lg navbar-${ props.colTheme ? "dark" : props.theme } bg-${ props.colTheme ? props.colTheme : props.theme }` }>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <a className="navbar-brand" href="#">
           { props.title }
-        </Link>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -48,15 +48,15 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <a className="nav-link active" aria-current="page" href="#">
                 Home
-              </Link>
+              </a>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
+            {/* <li className="nav-item">
+              <a className="nav-link" to="/about">
                 About
-              </Link>
-            </li>
+              </a>
+            </li> */}
           </ul>
           {/* <form className="d-flex" role="search">
             <input
