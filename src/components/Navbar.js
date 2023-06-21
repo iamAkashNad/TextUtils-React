@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types'
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
+  const [path, setPath] = useState("/");
   let modeText = "Enable Dark Mode";
 
 
@@ -31,9 +32,9 @@ export default function Navbar(props) {
   return (
     <nav className={ `navbar navbar-expand-lg navbar-${ props.colTheme ? "dark" : props.theme } bg-${ props.colTheme ? props.colTheme : props.theme }` }>
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/" onClick={ () => { setPath("/") } }>
           { props.title }
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -48,27 +49,16 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className={ `nav-link ${ path === "/" ? "active" : "" }` } onClick={ () => { setPath("/") } } aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
-            {/* <li className="nav-item">
-              <a className="nav-link" to="/about">
+            <li className="nav-item">
+              <Link className={ `nav-link ${ path === "/about" ? "active" : "" }` } onClick={ () => { setPath("/about") } } to="/about">
                 About
-              </a>
-            </li> */}
+              </Link>
+            </li>
           </ul>
-          {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-primary" type="submit">
-              Search
-            </button>
-          </form> */}
           <div className="mx-3 my-2">
             <span className="border border-2 rounded-circle bg-danger" data-color="red" onClick={ getThemeColor } style={ myStyle }></span>
             <span className="border border-2 rounded-circle bg-primary mx-1" data-color="blue" onClick={ getThemeColor } style={ myStyle }></span>

@@ -85,7 +85,7 @@ export default function TextForm(props) {
 
     const countWords = () => {
         let words = 0;
-        const arr = text.split(" ");
+        const arr = text.split(/\s/);
         for(const word of arr)
             if(word !== "")
                 words++;
@@ -125,18 +125,18 @@ export default function TextForm(props) {
             </label>
             <textarea className="form-control" style={ myStyle } value={ text } onChange={ handleChanges } id="enterText" rows={ props.rows }></textarea>
         </div>
-        <button className={`btn btn-outline-${ props.btnColor } my-2`} onClick={ clearText }>Clear Text</button>
-        <button className={`btn btn-${ props.btnColor } mx-2 my-2`} onClick={ convertToUpperCase }>Convert To Uppercase</button>
-        <button className={`btn btn-${ props.btnColor } my-2`} onClick={ convertToLowerCase }>Convert To Lowercase</button>
-        <button className={`btn btn-${ props.btnColor } mx-2 my-2`} onClick={ romoveExtraSpaces }>Remove Extra Spaces</button>
-        <button className={`btn btn-${ props.btnColor } my-2`} onClick={ reverseString }>Reverse</button>
+        <button disabled={ text.length === 0 } className={`btn btn-outline-${ props.btnColor } my-1`} onClick={ clearText }>Clear Text</button>
+        <button disabled={ text.length === 0 } className={`btn btn-${ props.btnColor } mx-1 my-1`} onClick={ convertToUpperCase }>Convert To Uppercase</button>
+        <button disabled={ text.length === 0 } className={`btn btn-${ props.btnColor } my-1`} onClick={ convertToLowerCase }>Convert To Lowercase</button>
+        <button disabled={ text.length === 0 } className={`btn btn-${ props.btnColor } mx-1 my-1`} onClick={ romoveExtraSpaces }>Remove Extra Spaces</button>
+        <button disabled={ text.length === 0 } className={`btn btn-${ props.btnColor } my-1`} onClick={ reverseString }>Reverse</button>
     </div>
     <div className="container my-3">
         <h3>Your input text summery</h3>
         <p>the input text has { countWords() } words & { text.length } characters({ countNonSpaceChars() } non-space characters).</p>
     </div>
     <div className="container my-5">
-        <Result content={ result } theme={ props.theme } colTheme={ props.colTheme } />
+        <Result content={ result } setAlert={ props.setAlert } theme={ props.theme } btnColor={ props.btnColor } colTheme={ props.colTheme } />
     </div>
     </>
   );

@@ -24,3 +24,7 @@
      /* background-color: rgb(0, 0, 88); */
      /* background-color: rgb(0, 53, 0); */
 }
+
+.accordion-button::after {
+    filter: invert(1);
+}
